@@ -1,0 +1,42 @@
+{
+  "name": "poc-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Monorepo POC with lerna, yarn, commitizen and github packages",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adbayb/poc-monorepo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adbayb/poc-monorepo/issues"
+  },
+  "homepage": "https://github.com/adbayb/poc-monorepo#readme",
+  "scripts": {
+    "start:registry": "verdaccio",
+    "bootstrap": "lerna bootstrap",
+    "release": "lerna version",
+    "unrelease": "lerna exec -- npm unpublish -f --registry=\"http://localhost:4873/\" \"\\${LERNA_PACKAGE_NAME}\"",
+    "changed": "lerna changed --all",
+    "test": "echo 'test'",
+    "build": "echo 'build'",
+    "watch": "echo 'watch'",
+    "start": "lerna run start"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "changelog": {
+    "emojis": true
+  },
+  "devDependencies": {
+    "conventional-changelog-custom-config": "^0.3.1",
+    "lerna": "3.22.1"
+  },
+  "dependencies": {
+    "verdaccio": "4.10.0"
+  }
+}

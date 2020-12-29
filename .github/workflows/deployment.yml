@@ -1,0 +1,47 @@
+name: Continuous Deployment
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published, edited]
+
+jobs:
+  release:
+    name: Generate tag and release packages
+    runs-on: ubuntu-latest
+    # @note: we cannot create two separate flows since release and deploy are linked together (especially during the workflow_dispatch event) due to GitHub action restrictions
+    # In fact, due to GitHub actions restrictions, we cannot serialize automatically multiple flow events with the default GITHUB_TOKEN
+    # @see: https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token
+    # To solve it, we can either use a personal token (not optimal if a collaborator is no more in the PayFit organization)
+    # Or use conditional job features (more verbose but better than using personal token):
+    if: github.event_name == 'workflow_dispatch'
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git fetch --tags --all
+      - name: Install
+        run: yarn
+      - name: Release
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: yarn release
+  deploy:
+    name: Deploy sandbox
+    runs-on: ubuntu-latest
+    needs: release
+    # @note: always is called to allow "deploy" job to run even if its dependent job (release) was not run
+    # We're in this case when the github release log (associated to components tags) is updated and we need to update the sandbox accordingly:
+    if: ${{ always() }} && (github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/components@'))
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+    steps:
+      - run: |
+          echo "Deploy"
+          echo "$GITHUB_CONTEXT"
+          echo "$GITHUB_REF"

@@ -1,0 +1,26 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": ["apps/*", "packages/*"],
+  "command": {
+    "init": {
+      "exact": true
+    },
+    "version": {
+      "allowBranch": "main",
+      "changelogPreset": "custom-config",
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "exact": true,
+      "message": "chore(release): publish",
+      "yes": true,
+      "ignoreChanges": [
+        "**/node_modules/**",
+        "**/*.md",
+        "**/__tests__/**",
+        "**/*.test.{ts?(x),js?(x)}"
+      ]
+    }
+  }
+}
