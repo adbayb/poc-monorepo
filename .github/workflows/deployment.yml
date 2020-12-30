@@ -21,12 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          # @note: lerna changed logic strongly relies on git metadata: the default shallow clone behavior is not sufficient
+          # @see: https://github.com/lerna/lerna/issues/2542
           fetch-depth: 0
       - name: Setup Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - name: Install
         run: yarn
       - name: Release
