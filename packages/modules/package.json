@@ -1,6 +1,6 @@
 {
   "name": "modules",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Module package",
   "publishConfig": {
     "registry": "http://localhost:4873"
@@ -17,6 +17,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "shared": "1.0.0"
+    "shared": "1.0.1"
   }
 }
