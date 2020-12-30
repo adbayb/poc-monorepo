@@ -1,6 +1,6 @@
 {
   "name": "components",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Component package",
   "publishConfig": {
     "registry": "http://localhost:4873"
@@ -17,6 +17,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "shared": "1.0.1"
+    "shared": "2.0.0"
   }
 }
