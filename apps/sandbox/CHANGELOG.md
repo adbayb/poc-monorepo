@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/adbayb/poc-monorepo/compare/sandbox@2.0.1...sandbox@2.0.2) (2020-12-30)
+
+**Note:** Version bump only for package sandbox
+
+
+
+
+
 ## [2.0.1](https://github.com/adbayb/poc-monorepo/compare/sandbox@1.0.1...sandbox@2.0.1) (2020-12-30)
 
 
