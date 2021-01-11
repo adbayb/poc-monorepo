@@ -1,7 +1,7 @@
 {
   "name": "sandbox",
   "private": true,
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Sandbox application",
   "publishConfig": {
     "registry": "http://localhost:4873"
@@ -18,7 +18,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "components": "2.4.0",
-    "modules": "2.3.0"
+    "components": "2.4.1",
+    "modules": "2.4.1"
   }
 }
