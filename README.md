@@ -37,6 +37,8 @@ https://github.com/lerna/lerna/tree/main/commands/add#examples
 
 ## Fixed
 
+Branch available [here](https://github.com/adbayb/poc-monorepo/tree/fixed)
+
 ✅ Pros:
 
 - No tag overwhelming: one tag per release
@@ -53,6 +55,8 @@ https://github.com/lerna/lerna/tree/main/commands/add#examples
 - Projects with strongly coupled packages (for example, a library built upon small other packages)
 
 ## Independent
+
+Branch available [here](https://github.com/adbayb/poc-monorepo/tree/independent)
 
 ✅ Pros:
 
