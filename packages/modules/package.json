@@ -1,6 +1,6 @@
 {
   "name": "modules",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Module package",
   "publishConfig": {
     "registry": "http://localhost:4873"
