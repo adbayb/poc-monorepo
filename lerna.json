@@ -2,10 +2,7 @@
   "version": "2.3.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": [
-    "packages/*",
-    "apps/*"
-  ],
+  "packages": ["packages/*", "apps/*"],
   "command": {
     "init": {
       "exact": true
@@ -16,7 +13,7 @@
       "conventionalCommits": true,
       "createRelease": "github",
       "exact": true,
-      "message": "chore(release): publish",
+      "message": "chore(release): publish %s",
       "yes": true,
       "ignoreChanges": [
         "**/node_modules/**",
