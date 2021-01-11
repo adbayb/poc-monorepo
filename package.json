@@ -17,7 +17,7 @@
   "scripts": {
     "start:registry": "verdaccio",
     "bootstrap": "lerna bootstrap",
-    "release": "lerna version",
+    "release": "lerna publish --registry=\"http://localhost:4873/\"",
     "unrelease": "lerna exec -- npm unpublish -f --registry=\"http://localhost:4873/\" \"\\${LERNA_PACKAGE_NAME}\"",
     "changed": "lerna changed --all",
     "test": "echo 'test'",

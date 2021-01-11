@@ -1,14 +1,14 @@
 {
-  "version": "independent",
+  "version": "0.0.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["apps/*", "packages/*"],
+  "packages": ["packages/*", "apps/*"],
   "command": {
     "init": {
       "exact": true
     },
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "master",
       "changelogPreset": "custom-config",
       "conventionalCommits": true,
       "createRelease": "github",
