@@ -1,1 +1,1 @@
-export const getVersion = () => new Date().valueOf() % 1000;
+export const getVersion = () => new Date().valueOf() % 10000;
