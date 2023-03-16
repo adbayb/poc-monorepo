@@ -1,0 +1,16 @@
+{
+	"$schema": "https://raw.githubusercontent.com/changesets/changesets/main/packages/config/schema.json",
+	"access": "restricted",
+	"baseBranch": "main",
+	"commit": false,
+	"updateInternalDependencies": "patch",
+	"changelog": [
+		"@changesets/changelog-github",
+		{ "repo": "adbayb/poc-monorepo" }
+	],
+	"ignore": [],
+	"linked": [["@adbayb/core", "@adbayb/react"]],
+	"___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+		"onlyUpdatePeerDependentsWhenOutOfRange": true
+	}
+}
