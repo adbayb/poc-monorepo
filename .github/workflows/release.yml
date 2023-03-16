@@ -1,0 +1,37 @@
+name: Release
+
+on:
+    push:
+        branches:
+            - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+    release:
+        name: Release
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js 18
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18.12.1
+
+            - name: Install pnpm package manager
+              run: |
+                  curl -L https://pnpm.js.org/pnpm.js | sudo node - add --global pnpm@7.13.0
+
+            - name: Install Dependencies
+              run: pnpm install
+
+            - name: Create Release Pull Request
+              uses: changesets/action@v1
+              with:
+                  commit: "chore: release package(s)"
+                  title: "chore: release package(s)"
+                  publish: echo "Publish"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
