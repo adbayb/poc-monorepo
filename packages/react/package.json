@@ -1,0 +1,52 @@
+{
+	"name": "@adbayb/react",
+	"private": true,
+	"version": "0.0.0",
+	"description": "An example package exporting React components",
+	"license": "MIT",
+	"homepage": "https://github.com/adbayb/poc-monorepo/blob/main/packages/react/README.md",
+	"author": {
+		"name": "Ayoub Adib",
+		"email": "adbayb@gmail.com",
+		"url": "https://twitter.com/adbayb"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:adbayb/poc-monorepo.git",
+		"directory": "packages/react"
+	},
+	"bugs": {
+		"url": "https://github.com/adbayb/poc-monorepo/issues"
+	},
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"source": "src/index.ts",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"sideEffects": false,
+	"scripts": {
+		"clean": "ts-node ../../scripts/clean",
+		"dev": "ts-node ../../scripts/build --watch",
+		"build": "ts-node ../../scripts/build",
+		"test": "jest --verbose",
+		"test:watch": "pnpm test -- --watch"
+	},
+	"peerDependencies": {
+		"@adbayb/core": "workspace:^",
+		"react": "^17.0.0 || ^18.0.0",
+		"react-dom": "^17.0.0 || ^18.0.0"
+	},
+	"devDependencies": {
+		"@adbayb/core": "workspace:*"
+	}
+}
