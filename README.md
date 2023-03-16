@@ -35,9 +35,7 @@ https://github.com/lerna/lerna/tree/main/commands/add#examples
 
 # Fixed vs Independent strategy mode
 
-## Fixed
-
-Branch available [here](https://github.com/adbayb/poc-monorepo/tree/fixed)
+## Fixed (used)
 
 ✅ Pros:
 
@@ -55,8 +53,6 @@ Branch available [here](https://github.com/adbayb/poc-monorepo/tree/fixed)
 - Projects with strongly coupled packages (for example, a library built upon small other packages)
 
 ## Independent
-
-Branch available [here](https://github.com/adbayb/poc-monorepo/tree/independent)
 
 ✅ Pros:
 
