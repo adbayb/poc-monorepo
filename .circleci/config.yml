@@ -1,0 +1,111 @@
+# @see https://circleci.com/docs/configuration-reference/
+version: 2.1
+
+aliases:
+    - &defaults
+      working_directory: ~/tmp
+      docker:
+          - image: cimg/node:18.14.2
+    - &attach
+      attach_workspace:
+          at: ~/tmp
+    - &persist
+      persist_to_workspace:
+          root: ~/tmp
+          paths:
+              - .
+    - &on_push_tags
+      filters:
+          tags:
+              only: /.*/
+          branches:
+              ignore: /.*/
+
+jobs:
+    install:
+        <<: *defaults
+        steps:
+            - checkout
+            - restore_cache:
+                  name: Restore pnpm Package Cache
+                  keys:
+                      - pnpm-packages-{{ checksum "pnpm-lock.yaml" }}
+            - run:
+                  name: Install pnpm package manager
+                  command: |
+                      sudo corepack enable
+                      sudo corepack prepare pnpm@latest-7 --activate
+            - run:
+                  name: Install Dependencies
+                  command: pnpm install
+            - *persist
+    build:
+        <<: *defaults
+        steps:
+            - *attach
+            - run:
+                  name: Build libraries
+                  command: pnpm build
+            - *persist
+    lint:
+        <<: *defaults
+        steps:
+            - *attach
+            - run:
+                  name: Run linters
+                  command: pnpm run lint
+    test:
+        <<: *defaults
+        steps:
+            - *attach
+            - run:
+                  name: Run test cases and coverage
+                  command: pnpm test:coverage
+            - store_artifacts:
+                  path: ./coverage
+    publish:
+        <<: *defaults
+        steps:
+            - *attach
+            - run:
+                  name: Publish
+                  command: echo "Publish ${CIRCLE_TAG}" && (echo "${CIRCLE_TAG}" | sed 's/@[0-9].*//')
+            - store_artifacts:
+                  path: ./coverage
+
+workflows:
+    # Integration workflow (build and check)
+    integration:
+        jobs:
+            - install
+            - build:
+                  requires:
+                      - install
+            - test:
+                  requires:
+                      - build
+            - lint:
+                  requires:
+                      - build
+    # Deployment workflow (automatic delivery on each push of tags: https://circleci.com/docs/workflows/#executing-workflows-for-a-git-tag)
+    deployment:
+        jobs:
+            - install:
+                  <<: *on_push_tags
+            - build:
+                  <<: *on_push_tags
+                  requires:
+                      - install
+            - test:
+                  <<: *on_push_tags
+                  requires:
+                      - build
+            - lint:
+                  <<: *on_push_tags
+                  requires:
+                      - build
+            - publish:
+                  <<: *on_push_tags
+                  requires:
+                      - lint
+                      - test
