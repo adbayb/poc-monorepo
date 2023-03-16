@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+    - name: 🤔 Questions and Help
+      url: https://github.com/adbayb/poc-monorepo/discussions
+      about: Issues are dedicated to bugs, if you have any question, please use the dedicated Discussions tab.
