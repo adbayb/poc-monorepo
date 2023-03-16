@@ -1,0 +1,12 @@
+{
+	"$schema": "https://raw.githubusercontent.com/changesets/changesets/main/packages/config/schema.json",
+	"access": "restricted",
+	"baseBranch": "main",
+	"commit": false,
+	"updateInternalDependencies": "patch",
+	"changelog": [
+		"@changesets/changelog-github",
+		{ "repo": "adbayb/poc-monorepo" }
+	],
+	"linked": [["@adbayb/core", "@adbayb/react"]]
+}
