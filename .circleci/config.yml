@@ -86,22 +86,6 @@ workflows:
             - lint:
                   requires:
                       - build
-    deployment:
-        jobs:
-            - install:
-                  <<: *on_push_tags
-            - build:
-                  <<: *on_push_tags
-                  requires:
-                      - install
-            - test:
-                  <<: *on_push_tags
-                  requires:
-                      - build
-            - lint:
-                  <<: *on_push_tags
-                  requires:
-                      - build
             - publish:
                   <<: *on_push_tags
                   requires:
