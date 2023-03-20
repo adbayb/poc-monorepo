@@ -1,7 +1,7 @@
 {
 	"name": "@adbayb/core",
 	"private": true,
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "An example package exporting vanilla JavaScript helpers",
 	"license": "MIT",
 	"homepage": "https://github.com/adbayb/poc-monorepo/blob/main/packages/core/README.md",
