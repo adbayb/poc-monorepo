@@ -1,7 +1,7 @@
 {
 	"name": "@adbayb/react",
 	"private": true,
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "An example package exporting React components",
 	"license": "MIT",
 	"homepage": "https://github.com/adbayb/poc-monorepo/blob/main/packages/react/README.md",
