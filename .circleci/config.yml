@@ -5,7 +5,7 @@ aliases:
     - &defaults
       working_directory: ~/tmp
       docker:
-          - image: cimg/node:18.14.2
+          - image: cimg/node:18.19.1
     - &attach
       attach_workspace:
           at: ~/tmp
